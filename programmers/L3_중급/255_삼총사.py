@@ -3,7 +3,7 @@
 # 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/131705
 # 알고리즘: 완전탐색
 # 작성자: 지소윤
-# 작성일: 2026. 01. 19. 10:53:43
+# 작성일: 2026. 01. 19. 11:27:26
 
 from itertools import combinations
 

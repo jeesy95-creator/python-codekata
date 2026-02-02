@@ -3,24 +3,28 @@
 # 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/43165
 # 알고리즘: DFS, 완전탐색
 # 작성자: 지소윤
-# 작성일: 2026. 02. 02. 23:35:48
+# 작성일: 2026. 02. 03. 00:03:10
+
+from collections import deque
 
 def solution(numbers, target):
     n = len(numbers)
-
-    def dfs(idx, cur_sum):
+    q = deque()
+    
+    q.append((0, 0))
+    
+    count = 0
+    
+    while q:
+        idx, cur_sum = q.popleft()        
         if idx == n:
             if cur_sum == target:
-                return 1
-            else:
-                return 0
-            
-        plus_case = dfs(idx + 1, cur_sum + numbers[idx])
-        minus_case = dfs(idx + 1, cur_sum - numbers[idx])
+                count +=1
+                  
+        else:
+            x = numbers[idx]
+            q.append((idx+1, cur_sum + x))
+            q.append((idx+1, cur_sum - x))
 
-        return plus_case + minus_case
-        
-    return dfs(0, 0)
-
-    
-    
+               
+    return count

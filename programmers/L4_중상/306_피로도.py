@@ -3,25 +3,26 @@
 # 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/87946
 # 알고리즘: 완전탐색, 백트래킹
 # 작성자: 지소윤
-# 작성일: 2026. 02. 02. 13:43:51
-
-from itertools import permutations
+# 작성일: 2026. 02. 02. 13:44:13
 
 def solution(k, dungeons):
-    answer = 0
+    n = len(dungeons)
+    best = 0
 
-    for order in permutations(dungeons):
-        cur = k
-        cnt = 0
+    def dfs(cur, mask, cnt):
+        nonlocal best
+        best = max(best, cnt)
 
-        for need, cost in order:
+        for i in range(n):
+            if mask & (1 << i):
+                continue
+
+            need, cost = dungeons[i]
             if cur >= need:
-                cur -= cost
-                cnt += 1
-            else:
-                break
+                dfs(cur - cost, mask | (1 << i), cnt + 1)
 
-        answer = max(answer, cnt)
+    dfs(k, 0, 0)
+    return best
 
     return answer
 

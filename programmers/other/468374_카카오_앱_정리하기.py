@@ -2,7 +2,7 @@
 # 프로그래머스 (unknown)
 # 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/468374
 # 작성자: 지소윤
-# 작성일: 2026. 05. 23. 21:36:28
+# 작성일: 2026. 05. 26. 09:31:53
 
 from collections import deque
 
